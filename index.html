@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AGENDA TELEFÔNICA</title>
+
+    <script>
+
+        var menu = "Menu\n 1 - Gravar\n 2 - Listar\n 3 - Buscar\n 4 - Excluir\n 5 - Sair\n Informe a opção:";
+        var contatos = new Array;
+        var nome = "";
+        var celular = "";
+        var exibicao = "";
+        var busca = "";
+        var confirmar = "";
+
+        do{
+            var opcao = parseInt(prompt(menu));
+            exibicao = "";
+            busca = "";
+            /* Gravar Contato */
+            if (opcao == 1){
+
+                nome = prompt("Informe o nome:");
+
+                celular = prompt("Informe o número do celular:");
+
+                contatos.push([nome,celular]);
+
+            }
+            /* Listar Contatos */
+            else if(opcao == 2){
+
+                for (let i=0; i<contatos.length; i++){
+                    
+                    exibicao += `Nome: ${contatos[i][0]} \nTelefone: ${contatos[i][1]}\n\n`;
+
+                }
+
+                alert(exibicao);
+
+            }
+            /*Buscar Contatos*/
+            else if(opcao == 3){
+                
+                busca = prompt("Informe o nome que deseja buscar:");
+
+                for(let i=0; i < contatos.length; i++ ){
+
+                    if(busca == contatos.length[i][0]){
+
+                        exibicao += `O resultado encontrado foi:\n Nome: ${contatos[i][0]} \nTelefone: ${contatos[i][1]}\n\n`;
+                        
+                    }
+                    
+                }
+
+                alert(exibicao);
+
+            }
+            /* Apagar Contatos */
+            else if(opcao == 4){
+
+                busca = prompt("Informe o nome do contato que deseja apagar: ");
+
+                for(let i=0; i < contatos.length; i++ ){
+
+                    if(busca == contatos[i][0]){
+
+                        exibicao += `O resultado encontrado foi:\nNome: ${contatos[i][0]} \nTelefone: ${contatos[i][1]}\n\n`;
+    
+                        alert(exibicao);
+
+                        confirmar = prompt("Realmente deseja apagar o contato encontrado? (s para sim/n para não)");
+
+                        if(confirmar == 's' ){
+
+                            contatos.splice(i,1);
+
+                        }
+                    }
+
+                }   
+                
+            }
+
+        }while(opcao!=5)
+
+    </script>
+
+</head>
+
+<body>
+
+</body>
+</html>
